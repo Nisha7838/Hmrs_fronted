@@ -45,7 +45,8 @@ export default function Attendance() {
     }
   };
 
-  const handleView = async () => {
+  const handleView = async (e) => {
+    console.log(e.target);
     Setloading(true);
     try {
       const res = await api.get(`/attendance/${record.empId}`);
@@ -111,7 +112,7 @@ export default function Attendance() {
         </button>
         <button
           type="button"
-          onClick={() => handleView()}
+          onClick={() => handleView(e)}
           className=" bg-blue-600 ml-4 text-white p-2 rounded hover:bg-blue-700 w-fit cursor-pointer"
         >
           View Attendance
