@@ -61,7 +61,7 @@ export default function Attendance() {
 
   useEffect(() => {
     fetchEmployees();
-  }, []);
+  }, [record]);
   if (loading) {
     return <FullScreenLoader />;
   }
