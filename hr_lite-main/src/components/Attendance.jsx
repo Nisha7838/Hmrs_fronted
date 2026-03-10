@@ -136,7 +136,7 @@ export default function Attendance() {
                   <div className="flex items-center gap-3">
                     <div>
                       <p className="text-sm text-gray-500">
-                        ID: {a.employee_id}
+                        Name: {a.employee_full_name}
                       </p>
                     </div>
                   </div>
@@ -145,11 +145,10 @@ export default function Attendance() {
 
                   <div>
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        a.status === true
-                          ? "bg-green-100 text-green-600"
-                          : "bg-red-100 text-red-600"
-                      }`}
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${a.status === true
+                        ? "bg-green-100 text-green-600"
+                        : "bg-red-100 text-red-600"
+                        }`}
                     >
                       {a.status === true ? "Present" : "Absent"}
                     </span>
