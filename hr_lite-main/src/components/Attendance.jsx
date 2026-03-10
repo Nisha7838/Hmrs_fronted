@@ -15,7 +15,12 @@ export default function Attendance() {
     try {
       const res = await api.get("/employees/");
       setEmployees(res.data.data);
-      console.log(res.data.data);
+      if (res.data.data.length > 0) {
+        const firstEmpId = res.data.data[0].employee_id;
+        setRecord((prev) => ({ ...prev, empId: firstEmpId }));
+        const attendanceRes = await api.get(`/attendance/${firstEmpId}`);
+        setAttendance(attendanceRes?.data?.data || []);
+      }
       Setloading(false);
     } catch (error) {
       console.error("Error fetching employees:", error);
