@@ -45,8 +45,7 @@ export default function Attendance() {
     }
   };
 
-  const handleView = async (e) => {
-    console.log(e.target);
+  const handleView = async () => {
     Setloading(true);
     try {
       const res = await api.get(`/attendance/${record.empId}`);
@@ -73,6 +72,7 @@ export default function Attendance() {
       <form className="space-y-3" onSubmit={handleSubmit}>
         <select
           className="w-full border p-2 rounded"
+          value={record.empId}   // <--- make it controlled
           onChange={(e) =>
             setRecord({
               ...record,
@@ -81,7 +81,6 @@ export default function Attendance() {
           }
         >
           <option value="">Select Employee</option>
-
           {employees.map((e) => (
             <option key={e.employee_id} value={e.employee_id}>
               {e.full_name}
@@ -112,7 +111,7 @@ export default function Attendance() {
         </button>
         <button
           type="button"
-          onClick={() => handleView(e)}
+          onClick={handleView}
           className=" bg-blue-600 ml-4 text-white p-2 rounded hover:bg-blue-700 w-fit cursor-pointer"
         >
           View Attendance
