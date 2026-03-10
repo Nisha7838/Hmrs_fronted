@@ -35,7 +35,7 @@ export default function Attendance() {
 
     try {
       const res = await api.post("/attendance/", payload);
-
+      await handleView();
       console.log("Attendance saved:", res.data);
       Setloading(false);
     } catch (error) {
@@ -61,7 +61,7 @@ export default function Attendance() {
 
   useEffect(() => {
     fetchEmployees();
-  }, [record]);
+  }, []);
   if (loading) {
     return <FullScreenLoader />;
   }
